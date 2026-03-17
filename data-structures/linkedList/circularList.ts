@@ -32,7 +32,7 @@ class CircularLinkedList<T> {
     this.head = node;
   }
 
-  insetAtEnd(val: T) {
+  insertAtEnd(val: T) {
     let node = new Box(val);
     node.next = node;
 
@@ -63,8 +63,8 @@ class CircularLinkedList<T> {
 const list = new CircularLinkedList(10);
 list.insertAtBeginning(20);
 list.insertAtBeginning(40);
-list.insetAtEnd(1);
-list.insetAtEnd(2);
-list.insetAtEnd(3);
+list.insertAtEnd(1);
+list.insertAtEnd(2);
+list.insertAtEnd(3);
 
 list.traverse();

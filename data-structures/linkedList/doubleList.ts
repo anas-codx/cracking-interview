@@ -61,16 +61,15 @@ class DoublyLinkedList<T> {
     } else {
       if (this.head === null) return;
       let tmp = this.head;
-      while (--pos > 0 && tmp.next !== null && tmp.next.next !== null) {
+      while (--pos > 0 && tmp.next !== null) {
         tmp = tmp.next;
       }
-      if (tmp.next === null) {
-        tmp.next = node;
-      }
-      node.next = tmp.next.next;
-      tmp.next.prev = node;
-      tmp.next = node;
+      node.next = tmp.next;
       node.prev = tmp;
+      if (tmp.next !== null) {
+        tmp.next.prev = node;
+      }
+      tmp.next = node;
     }
   }
 

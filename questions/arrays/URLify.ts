@@ -15,8 +15,9 @@ function urlify(s: string, n: number): string {
       j = j - 3;
     }
   }
-  console.log(arr.join());
-  return "";
+  const result = arr.join("");
+  console.log(result);
+  return result;
 }
 
 urlify(s, n);
