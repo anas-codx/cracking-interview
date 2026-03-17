@@ -74,7 +74,7 @@ export class List<T> {
     let tmp = this.head;
     if (pos === 0) {
       n = this.head.val;
-      this.head = null;
+      this.head = this.head.next;
     } else if (pos === 1 && tmp.next) {
       n = tmp.next.val;
       this.head.next = tmp.next.next;
