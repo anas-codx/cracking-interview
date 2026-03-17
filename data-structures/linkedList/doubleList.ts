@@ -48,6 +48,32 @@ class DoublyLinkedList<T> {
     node.prev = tmp;
   }
 
+  insertAt(val: T, pos: number) {
+    let node = new Box(val);
+    if (pos < 1) {
+      if (this.head === null) {
+        this.head = node;
+        return;
+      }
+      node.next = this.head;
+      this.head.prev = node;
+      this.head = node;
+    } else {
+      if (this.head === null) return;
+      let tmp = this.head;
+      while (--pos > 0 && tmp.next !== null && tmp.next.next !== null) {
+        tmp = tmp.next;
+      }
+      if (tmp.next === null) {
+        tmp.next = node;
+      }
+      node.next = tmp.next.next;
+      tmp.next.prev = node;
+      tmp.next = node;
+      node.prev = tmp;
+    }
+  }
+
   deleteLast(): T | null {
     if (this.head === null) return null;
 
@@ -71,13 +97,9 @@ class DoublyLinkedList<T> {
   }
 }
 
-const list = new DoublyLinkedList(3);
-list.insertAtBeginning(4);
-list.insertAtBeginning(5);
-list.insertAtBeginning(6);
-list.insertAtBeginning(9);
+const list = new DoublyLinkedList(4);
+list.insertAtBeginning(3);
+list.insertAtBeginning(2);
 list.insertAtEnd(30);
+list.insertAt(100, 6);
 list.traverse();
-console.log(`deleted ${list.deleteFirst()}`);
-console.log(`deleted ${list.deleteLast()}`);
-console.log(`deleted ${list.deleteLast()}`);
